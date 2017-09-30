@@ -6,6 +6,13 @@
 #define num_rooms 6
 #define num_room_chars 4
 
+typedef struct monster 
+{
+    int characteristics;
+    int speed;
+} monster_t;
+
+
 char distances_non_tunnel[dungeon_rows][dungeon_columns];
 char distances_tunnel[dungeon_rows][dungeon_columns];
 char dungeon[dungeon_rows][dungeon_columns];

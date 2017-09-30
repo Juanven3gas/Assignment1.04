@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "dun_utils.h"
 
 int main(int argc, char* argv[])
@@ -38,16 +39,29 @@ int main(int argc, char* argv[])
         }
     }
 
-    /*
+    /**
     * End of handling user inputs and arguments
     * Start of generating monsters with characteristics
     */
 
     int index;
+    srand(time(NULL));
+
+    monster_t monsters[num_monsters];
+
     for(index = 0; index < num_monsters; index++)
     {
-        
+        int characteristics = rand() & 0xf;
+        int speed = (rand() % 15) + 5;
+        monsters[index].characteristics = characteristics;
+        monsters[index].speed = speed;
+        printf("Characteristics for monster %d is %x and speed is %d\n", index, monsters[index].characteristics, monsters[index].speed);
     }
+
+    /**
+     * End of monster generation
+     * Start of character movement
+     */
 
     return 0;
 }
