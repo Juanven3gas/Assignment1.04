@@ -1,0 +1,143 @@
+commit c6e07758b3f49172507d87c5b69893dc1546ec1c
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 26 17:54:18 2017 -0500
+
+    fixed algorithm for tunneling monsters
+
+commit 8c0516f9e7393525a773bb7d8e246392e5b742a0
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 26 15:21:11 2017 -0500
+
+    Found bug in program. Crashed when it reaches the outer most vertices
+
+commit ee818fa9adf5b70cfd665ac5d6bc3c83b1bb7ea7
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 26 12:13:19 2017 -0500
+
+    Fixed bug in tunneling monster algorithm
+
+commit 66374c25b92a9ede9f32b78b6494d9f18584d280
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 26 10:35:58 2017 -0500
+
+    finished dijkstras for tunnling monsters still need to test
+
+ ESCOD
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 26 17:54:18 2017 -0500
+
+    fixed algorithm for tunneling monsters
+
+commit 8c0516f9e7393525a773bb7d8e246392e5b742a0
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 26 15:21:11 2017 -0500
+
+    Found bug in program. Crashed when it reaches the outer most vertices
+
+commit ee818fa9adf5b70cfd665ac5d6bc3c83b1bb7ea7
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 26 12:13:19 2017 -0500
+
+    Fixed bug in tunneling monster algorithm
+
+commit 66374c25b92a9ede9f32b78b6494d9f18584d280
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 26 10:35:58 2017 -0500
+
+    finished dijkstras for tunnling monsters still need to test
+
+commit 39d90c92e72583367befae6d369d38eaf02b3871
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Mon Sep 25 21:17:34 2017 -0500
+
+    attempting to do djisktras on tunneling monsters
+
+commit 5b229cbc9096dc4ea56ccfd4ff51bdb7319a8c84
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 19 14:36:52 2017 -0500
+
+    added functionality for 8 way connectivity for the cells in dungeon
+
+commit e0853c2e4fb94c892c357c3c7dbff08260df2b56
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 19 12:20:33 2017 -0500
+
+    Cleaning up some of the project space
+
+commit 7c3018ac5b97d152a8188c04178a0859cea7310c
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 19 12:17:43 2017 -0500
+
+    dijkstras now works for non tunneling monsters & prints correctly
+
+commit 029b29e53931f19ef010e5904134197f815e56c7
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 19 11:49:57 2017 -0500
+
+    disatances from the PC are calculated but there is an error somewhere that causes miscalculations
+
+commit 9282915b8b84031e385390a197fe5a549775b89f
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Tue Sep 19 00:19:45 2017 -0500
+
+    implementing dijkstras without min heap
+
+commit 541c25634fe367fabf7b1c2653099157f2fe1490
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Mon Sep 18 18:51:35 2017 -0500
+
+    "starting set up for dijkstra's algorithm"
+
+commit d3c6de8f6d2059c32c252365e3363f2d3cddb3dd
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Mon Sep 18 18:21:41 2017 -0500
+
+    adjusting the data structure for dijkstra's
+
+commit cf3bfa910c7e2bb0f53ab3db5b2bf671ceabf613
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Mon Sep 18 18:13:00 2017 -0500
+
+    removed gz file
+
+commit 118ff48e659094defa012a7880d143b872bfb4ec
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Mon Sep 18 18:11:35 2017 -0500
+
+    removed the gz and added the folder
+
+commit 7a72dd7ff97258157b25186704e7204c18176b3e
+Author: Juanven3gas <juanven3gas@gmail.com>
+Date:   Mon Sep 18 16:59:58 2017 -0500
+
+    adding for notes
+
+commit c7a5ffcfa5f1931dbfaa5f65bbcf86262db7a378
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Sun Sep 17 16:50:05 2017 -0500
+
+    adding 3rd party min head implementation
+
+commit 5bb6e90d6f845480fbb6bf91b8daa3e75e2c0cb8
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Sun Sep 17 16:49:28 2017 -0500
+
+    adding 3rd party min heap implementation
+
+commit 8ac366ba5168acdbc0a4e7c38edaea821d78413c
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Sun Sep 17 15:30:33 2017 -0500
+
+    code now places player in a random room and a random position in that room
+
+commit 42910603f688a9f23defa035a81a8799b85031f3
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Sun Sep 17 11:57:45 2017 -0500
+
+    adding some skeleton code
+
+commit 6cbd2bc959bdab6bc388bfa248b91d1d1d525840
+Author: Juan Venegas <juanven3gas@gmail.com>
+Date:   Sun Sep 17 11:44:03 2017 -0500
+
+    Setting up working directory
