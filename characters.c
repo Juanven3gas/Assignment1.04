@@ -5,6 +5,8 @@
 #include "dun_utils.h"
 #include "priority_queue.h"
 
+void createMonsters(monster_t *arr, int size);
+
 int main(int argc, char* argv[])
 {
     int num_monsters = 0;
@@ -46,21 +48,11 @@ int main(int argc, char* argv[])
     * Start of generating monsters with characteristics
     */
 
-    int index;
+    
     srand(time(NULL));
 
     monster_t monsters[num_monsters];
-
-    for(index = 0; index < num_monsters; index++)
-    {
-        int characteristics = rand() & 0xf;
-        int speed = (rand() % 15) + 5;
-        monsters[index].characteristics = characteristics;
-        monsters[index].speed = speed;
-        monsters[index].move = event_constant / speed;
-        printf("Characteristics for monster %d is %x and speed is %d and is moving in turn %d\n", index, monsters[index].characteristics, monsters[index].speed, monsters[index].move);
-    }
-
+    createMonsters(monsters, num_monsters);
     printf("The PC will move on turn %d\n", event_constant/10);
 
     /**
@@ -69,4 +61,18 @@ int main(int argc, char* argv[])
      */
      
     return 0;
+}
+
+void createMonsters(monster_t *arr, int size)
+{
+    int index;
+    for(index = 0; index < size; index++)
+    {
+        int characteristics = rand() & 0xf;
+        int speed = (rand() % 15) + 5;
+        arr[index].characteristics = characteristics;
+        arr[index].speed = speed;
+        arr[index].move = event_constant / speed;
+        printf("Characteristics for monster %d is %x and speed is %d and is moving in turn %d\n", index, arr[index].characteristics, arr[index].speed, arr[index].move);
+    }
 }
