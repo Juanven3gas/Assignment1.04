@@ -3,10 +3,12 @@
 #include <string.h>
 #include <time.h>
 #include "dun_utils.h"
+#include "priority_queue.h"
 
 int main(int argc, char* argv[])
 {
     int num_monsters = 0;
+    //int turn = 0;
 
     //Check the argumens
     //and handle user inputs
@@ -55,13 +57,16 @@ int main(int argc, char* argv[])
         int speed = (rand() % 15) + 5;
         monsters[index].characteristics = characteristics;
         monsters[index].speed = speed;
-        printf("Characteristics for monster %d is %x and speed is %d\n", index, monsters[index].characteristics, monsters[index].speed);
+        monsters[index].move = event_constant / speed;
+        printf("Characteristics for monster %d is %x and speed is %d and is moving in turn %d\n", index, monsters[index].characteristics, monsters[index].speed, monsters[index].move);
     }
+
+    printf("The PC will move on turn %d\n", event_constant/10);
 
     /**
      * End of monster generation
      * Start of character movement
      */
-
+     
     return 0;
 }

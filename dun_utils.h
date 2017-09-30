@@ -5,11 +5,14 @@
 #define dungeon_columns 80
 #define num_rooms 6
 #define num_room_chars 4
+#define event_constant 1000
+#define pc_speed 10
 
 typedef struct monster 
 {
     int characteristics;
     int speed;
+    int move;
 } monster_t;
 
 
