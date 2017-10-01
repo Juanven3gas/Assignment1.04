@@ -1,19 +1,21 @@
 #ifndef PRIORITY_QUEUE_H
 #define PRIORITY_QUEUE_H
 
-typedef struct node{
-    int index;
-    int priority;
-    char *data;
-} node_t;
-
-typedef struct heap{
-    node_t *nodes;
-    int len;
+typedef struct queue_node {
+    int value;
+    struct queue_node *next;
+  } queue_node_t;
+  
+  typedef struct queue {
     int size;
-} heap_t;
-
-void push (heap_t *h, int priority, char *data);
-char *pop (heap_t *h);
+    queue_node_t *head, *tail;
+  } queue_t;
+  
+  int queue_init(queue_t *q);
+  int queue_delete(queue_t *q);
+  int queue_add(queue_t *q, int v);
+  int queue_remove(queue_t *q, int *v);
+  int queue_peek(queue_t *q, int *v);
+  int queue_size(queue_t *q);
 
 #endif

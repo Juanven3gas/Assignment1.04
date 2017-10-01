@@ -47,8 +47,6 @@ int main(int argc, char* argv[])
     * End of handling user inputs and arguments
     * Start of generating monsters with characteristics
     */
-
-    
     srand(time(NULL));
 
     monster_t monsters[num_monsters];
