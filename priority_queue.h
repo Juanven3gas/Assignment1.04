@@ -8,6 +8,7 @@ typedef struct monster
     int characteristics;
     int speed;
     int move;
+    int alive;
 } monster_t;
 
 typedef struct queue_node {
