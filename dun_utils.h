@@ -10,6 +10,8 @@
 
 typedef struct monster 
 {
+    int x_pos;
+    int y_pos;
     int characteristics;
     int speed;
     int move;
@@ -26,7 +28,7 @@ int pc_y_position;
 
 void print_dungeon(void);
 int gen_dun(void);
-int calc_distances(void);
 void place_PC(void);
 
+int calc_distances(void);
 #endif
