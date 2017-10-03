@@ -2,11 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <limits.h>
 #include "dun_utils.h"
 #include "priority_queue.h"
 
 void createMonsters(monster_t *arr, int size);
 void placeMonsters(monster_t *arr, int size);
+int moveMonster(monster_t m);
+int charToInt(char c);
+
+int game_won = 0;
 
 int main(int argc, char* argv[])
 {
@@ -76,12 +81,204 @@ int main(int argc, char* argv[])
          queue_add(q,monsters[index], priority);
      }
 
-     monster_t firstToMove;
-     queue_peek(q,&firstToMove);
-     printf("The first monster to move is %x, at %d,%d\n", firstToMove.characteristics, firstToMove.x_pos, firstToMove.y_pos);
+     int game_finshed = 0;
      
+     while(!game_finshed)
+     {
+         //Grab the first monster to move
+         monster_t toMove;
+         queue_remove(q, &toMove);
+         game_finshed = moveMonster(toMove);
+     }
+     
+     if(!game_won)
+     {
+         printf("GAME OVER PLAYER WAS EATEN BY MONSTER!!\n");
+     }
+     else
+     {
+         printf("GAME WON ALL MONSTER DESTROYED!!\n");
+     }
+     //monster_t firstToMove;
+     //queue_peek(q,&firstToMove);
+     //printf("The first monster to move is %x, at %d,%d\n", firstToMove.characteristics, firstToMove.x_pos, firstToMove.y_pos);
+     
+
      queue_delete(q);
      free(q);
+
+    return 0;
+}
+
+int moveMonster(monster_t m)
+{
+    switch(m.characteristics)
+    {
+        case 0x0:
+        break;
+        case 0x1:
+        break;
+        case 0x2:
+        break;
+        case 0x3:
+        int monsterXPos = m.x_pos;
+        int monsterYPos = m.y_pos;
+        int minX = 0;
+        int minY = 0;
+        int min = INT_MAX;
+        //Get all 8 positions and see what is available
+        if(distances_non_tunnel[monsterXPos+1][monsterYPos] != ' ')
+        {
+            if(distances_non_tunnel[monsterXPos+1][monsterYPos] == '@')
+            {
+                //move the monster over and win the game
+                dungeon[monsterXPos+1][monsterYPos] = '3';
+                return 1;
+            }
+            int dis = distances_non_tunn[monsterXPos+1][monsterYPos];
+            if(dis < min)
+            {
+                min = dis;
+                minX = monsterXPos+1;
+                minY = monsterYPos;
+            }
+            
+        }
+        if(distances_non_tunnel[monsterXPos-1][monsterYPos] != ' ')
+        {
+            if(distances_non_tunnel[monsterXPos-1][monsterYPos] == '@')
+            {
+                dungeon[monsterXPos-1][monsterYPos] = '3';
+                return 1;
+            }
+            int dis = distances_non_tunn[monsterXPos-1][monsterYPos]);
+            if(dis < min)
+            {
+                min = dis;
+                minX = monsterXPos-1;
+                minY = monsterYPos;
+            }
+            
+        }
+        if(distances_non_tunnel[monsterXPos][monsterYPos+1] != ' ')
+        {
+            if(distances_non_tunnel[monsterXPos][monsterYPos+1] == '@')
+            {
+                dungeon[monsterXPos][monsterYPos+1] = '3';
+                return 1;
+            }
+            
+            int dis = distances_non_tunn[monsterXPos][monsterYPos+1]);
+            if(dis < min)
+            {
+                min = dis;
+                minX = monsterXPos;
+                minY = monsterYPos+1;
+            }
+        }
+        if(distances_non_tunnel[monsterXPos][monsterYPos-1] != ' ')
+        {
+            if(distances_non_tunnel[monsterXPos][monsterYPos-1] == '@')
+            {
+                dungeon[monsterXPos][monsterYPos-1] = '3';
+                return 1;
+            }
+            int dis = distances_non_tunn[monsterXPos][monsterYPos-1];
+            if(dis < min)
+            {
+                min = dis;
+                minX = monsterXPos;
+                minY = monsterYPos-1;
+            }
+        }
+        if(distances_non_tunnel[monsterXPos+1][monsterYPos-1] != ' ')
+        {
+            if(distances_non_tunnel[monsterXPos+1][monsterYPos-1] == '@')
+            {
+                dungeon[monsterXPos+1][monsterYPos-1] = '3';
+                return 1;
+            }
+            int dis = distances_non_tunn[monsterXPos+1][monsterYPos-1]);
+            if(dis < min)
+            {
+                min = dis;
+                minX = monsterXPos+1;
+                minY = monsterYPos-1;
+            }
+        }
+        if(distances_non_tunnel[monsterXPos+1][monsterYPos+1] != ' ')
+        {
+            if(distances_non_tunnel[monsterXPos+1][monsterYPos+1] == '@')
+            {
+                dungeon[monsterXPos+1][monsterYPos+1] = '3';
+                return 1;
+            }
+            int dis = distances_non_tunn[monsterXPos+1][monsterYPos+1];
+            if(dis < min)
+            {
+                min = dis;
+                minX = monsterXPos+1;
+                minY = monsterYPos+1;
+            }
+        }
+        if(distances_non_tunnel[monsterXPos-1][monsterYPos+1] != ' ')
+        {
+            if(distances_non_tunnel[monsterXPos-1][monsterYPos+1] == '@')
+            {
+                dungeon[monsterXPos-1][monsterYPos+1] = '3';
+                return 1;
+            }
+            int dis = distances_non_tunn[monsterXPos-1][monsterYPos+1]);
+            if(dis < min)
+            {
+                min = dis;
+                minX = monsterXPos-1;
+                minY = monsterYPos+1;
+            }
+        }
+        if(distances_non_tunnel[monsterXPos-1][monsterYPos-1] != ' ')
+        {
+            if(distances_non_tunnel[monsterXPos-1][monsterYPos-1] == '@')
+            {
+                dungeon[monsterXPos-1][monsterYPos-1] = '3';
+                return 1;
+            }
+            int dis = distances_non_tunn[monsterXPos-1][monsterYPos-1]);
+            if(dis < min)
+            {
+                min = dis;
+                minX = monsterXPos-1;
+                minY = monsterYPos-1;
+            }
+            
+        }
+
+        break;
+        case 0x4:
+        break;
+        case 0x5:
+        break;
+        case 0x6:
+        break;
+        case 0x7:
+        break;
+        case 0x8:
+        break;
+        case 0x9:
+        break;
+        case 0xa:
+        break;
+        case 0xb:
+        break;
+        case 0xc:
+        break;
+        case 0xd:
+        break;
+        case 0xe:
+        break;
+        case 0xf:
+        break;
+    }
 
     return 0;
 }
@@ -192,4 +389,33 @@ void createMonsters(monster_t *arr, int size)
         arr[index].move = event_constant / speed;
         printf("Characteristics for monster %d is %x and speed is %d and is moving in turn %d\n", index, arr[index].characteristics, arr[index].speed, arr[index].move);
     }
+}
+
+int charToInt(char c)
+{
+    switch(c)
+    {
+        case '0':
+        return 0;
+        case '1':
+        return 1;
+        case '2':
+        return 2;
+        case '3':
+        return 3;
+        case '4':
+        return 4;
+        case '5':
+        return 5;
+        case '6':
+        return 6;
+        case '7':
+        return 7;
+        case '8':
+        return 8;
+        case '9':
+        return 9;
+    }
+
+    return 0;
 }

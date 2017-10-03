@@ -10,6 +10,10 @@
 
 char distances_non_tunnel[dungeon_rows][dungeon_columns];
 char distances_tunnel[dungeon_rows][dungeon_columns];
+
+int distances_non_tunn[dungeon_rows][dungeon_columns];
+int distances_tunn[dungeon_rows][dungeon_columns];
+
 char dungeon[dungeon_rows][dungeon_columns];
 int rooms[num_rooms][num_room_chars];
 int hardness[dungeon_rows][dungeon_columns];

@@ -72,6 +72,7 @@ int calc_distances(void)
            char toAdd = int_to_char(distances[min_v] % 10);
 
            distances_non_tunnel[x_pos][y_pos] = toAdd;
+           distances_non_tunn[x_pos][y_pos] = distances[min_v];
 
            if(dungeon[x_pos + 1][y_pos] == '.' || dungeon[x_pos + 1][y_pos] == '#')
            {
@@ -590,6 +591,7 @@ void init_non_tunnel_arr(void)
         for(col = 0; col < dungeon_columns; col++)
         {
             distances_non_tunnel[row][col] = ' ';
+            distances_non_tunn[row][col] = 0;
         }
     }
 }
