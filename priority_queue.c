@@ -16,9 +16,9 @@ int queue_init(queue_t *q)
 
 int queue_delete(queue_t *q)
 {
-  int i;
+  monster_t m;
 
-  while (!queue_remove(q, &i))
+  while (!queue_remove(q, &m))
     ;
 
   free(q->head);
@@ -26,7 +26,7 @@ int queue_delete(queue_t *q)
   return 0;
 }
 
-int queue_add(queue_t *q, int v, int priority)
+int queue_add(queue_t *q, monster_t m, int priority)
 {
   //If the queue is not empty
   if (q->head->next != NULL) 
@@ -45,7 +45,7 @@ int queue_add(queue_t *q, int v, int priority)
       return 1;
     }*/
 
-    toAdd->value = v;
+    toAdd->monster = m;
     toAdd->priority = priority;
 
     queue_node_t *cursor = q->head->next;
@@ -92,7 +92,7 @@ int queue_add(queue_t *q, int v, int priority)
       return 1;
     }
 
-    toAdd->value = v;
+    toAdd->monster = m;
     toAdd->priority = priority;
     /*if (!(q->tail = q->head = malloc(sizeof (*q->tail)))) {
       fprintf(stderr, "Out of memory.\n");
@@ -113,7 +113,7 @@ int queue_add(queue_t *q, int v, int priority)
   return 0; /* Won't be reached */
 }
 
-int queue_remove(queue_t *q, int *v)
+int queue_remove(queue_t *q, monster_t *m)
 {
   queue_node_t *n;
 
@@ -126,7 +126,7 @@ int queue_remove(queue_t *q, int *v)
 
   q->head->next = n->next;
   q->size--;
-  *v = n->value;
+  *m = n->monster;
   free(n);
 
   /*if (!q->size) {
@@ -136,10 +136,10 @@ int queue_remove(queue_t *q, int *v)
   return 0;
 }
 
-int queue_peek(queue_t *q, int *v)
+int queue_peek(queue_t *q, monster_t *m)
 {
   if (q->size) {
-    *v = q->head->next->value;
+    *m = q->head->next->monster;
 
     return 0;
   }

@@ -30,7 +30,7 @@ int calc_distances(void)
 {
    gen_dun();
    place_PC();
-   print_dungeon();
+   //print_dungeon();
    init_non_tunnel_arr();
    init_tunnel_arr();
 
@@ -195,7 +195,7 @@ int calc_distances(void)
    }
    
    distances_non_tunnel[pc_x_position][pc_y_position] = '@';
-   print_non_tunnel_arr();
+   //print_non_tunnel_arr();
 
    //begin djisktras for tunneling monsters
    //does everything except for the outtermost row & column
@@ -462,7 +462,7 @@ int calc_distances(void)
 
    //print the tunneling monsters array
    distances_tunnel[pc_x_position][pc_y_position] = '@';
-   print_tunnel_arr();
+   //print_tunnel_arr();
    //printf("INT_MAX mod 10 = %d", INT_MAX % 10);
    return 0;
 }

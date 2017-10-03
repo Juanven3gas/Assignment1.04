@@ -49,12 +49,10 @@ int main(int argc, char* argv[])
     *Start of setting up the dungeon and the distances array
     */
 
-    //calc_distances();
-    gen_dun();
-    place_PC();
+    calc_distances();
 
     /**
-    * 
+    * End setting up dungeon
     * Start of generating monsters with characteristics and place them in a random place in the dungeon
     */
     srand(time(NULL));
@@ -63,12 +61,28 @@ int main(int argc, char* argv[])
     createMonsters(monsters, num_monsters);
     placeMonsters(monsters, num_monsters);
     print_dungeon();
-    printf("The PC will move on turn %d\n", event_constant/10);
+    
     /**
      * End of monster generation
      * Start of character movement
      */
+    
+     queue_t *q = (queue_t *) malloc(sizeof(queue_t));
+     queue_init(q);
+     int index;
+     for(index = 0; index < num_monsters; index++)
+     {
+         int priority = event_constant / monsters[index].speed;
+         queue_add(q,monsters[index], priority);
+     }
+
+     monster_t firstToMove;
+     queue_peek(q,&firstToMove);
+     printf("The first monster to move is %x, at %d,%d\n", firstToMove.characteristics, firstToMove.x_pos, firstToMove.y_pos);
      
+     queue_delete(q);
+     free(q);
+
     return 0;
 }
 
@@ -104,6 +118,8 @@ void placeMonsters(monster_t *arr, int size)
             {
                 //place the character of the monster
                 int characteristics = arr[index].characteristics;
+                arr[index].x_pos = monster_start_row;
+                arr[index].y_pos = monster_start_col;
                 success = 1;
 
                 switch (characteristics)

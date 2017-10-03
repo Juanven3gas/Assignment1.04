@@ -1,5 +1,5 @@
-dun_program: characters.o gen_dun.o priority_queue.o
-	gcc characters.o gen_dun.o priority_queue.o -o dun_program
+dun_program: characters.o gen_dun.o distances.o priority_queue.o
+	gcc characters.o gen_dun.o priority_queue.o distances.o -o dun_program
 
 characters.o: characters.c dun_utils.h priority_queue.h
 	gcc -Werror -Wall -ggdb characters.c -c

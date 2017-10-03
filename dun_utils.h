@@ -8,16 +8,6 @@
 #define event_constant 1000
 #define pc_speed 10
 
-typedef struct monster 
-{
-    int x_pos;
-    int y_pos;
-    int characteristics;
-    int speed;
-    int move;
-} monster_t;
-
-
 char distances_non_tunnel[dungeon_rows][dungeon_columns];
 char distances_tunnel[dungeon_rows][dungeon_columns];
 char dungeon[dungeon_rows][dungeon_columns];
