@@ -5,6 +5,7 @@ typedef struct monster
 {
     int x_pos;
     int y_pos;
+    int room;
     int characteristics;
     int speed;
     int move;

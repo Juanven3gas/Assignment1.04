@@ -108,7 +108,7 @@ int main(int argc, char* argv[])
      {
          printf("GAME WON ALL MONSTER DESTROYED!!\n");
      }
-     print_dungeon();
+     //print_dungeon();
      //monster_t firstToMove;
      //queue_peek(q,&firstToMove);
      //printf("The first monster to move is %x, at %d,%d\n", firstToMove.characteristics, firstToMove.x_pos, firstToMove.y_pos);
@@ -132,6 +132,56 @@ int moveMonster(monster_t m)
 
     if(m.characteristics == 0x0)
     {
+        //Look in the room to find the PC and move 1 cell closer
+        int room_rows = rooms[m.room][0];
+        int room_cols = rooms[m.room][1];
+        int room_x = rooms[m.room][2];
+        int room_y = rooms[m.room][3];
+
+        int startX, startY;
+        int pc_x = -1;
+        int pc_y = -1;
+        for(startX = 0; startX < (room_x + room_rows); startX++)
+        {
+            for(startY = 0; startY < (room_y + room_cols); startY++)
+            {
+                if(dungeon[startX][startY] == '@')
+                {
+                    pc_x = startX;
+                    pc_y = startY;
+                }
+            }
+        }
+
+        if(pc_x == -1 || pc_y == -1)
+        {
+            //PC was not in the room and dont move
+            return 0;
+        }
+        else
+        {
+            dungeon[m.x_pos][m.y_pos] = '.';
+
+            if(pc_x < m.x_pos)
+            {
+                m.x_pos = m.x_pos - 1;
+            }
+            if(pc_x > m.x_pos)
+            {
+                m.x_pos = m.x_pos + 1;
+            }
+            if(pc_y < m.y_pos)
+            {
+                m.y_pos = m.y_pos - 1;
+            }
+            if(pc_y > m.y_pos)
+            {
+                m.y_pos = m.y_pos + 1;
+            }
+
+            dungeon[m.x_pos][m.y_pos] = '0';
+        }
+
         return 0;
     }
     else if (m.characteristics == 0x1)
@@ -386,6 +436,7 @@ int checkForPC(monster_t m)
 
     return 0;
 }
+
 void placeMonsters(monster_t *arr, int size)
 {
     int index;
@@ -420,6 +471,7 @@ void placeMonsters(monster_t *arr, int size)
                 int characteristics = arr[index].characteristics;
                 arr[index].x_pos = monster_start_row;
                 arr[index].y_pos = monster_start_col;
+                arr[index].room = room;
                 success = 1;
 
                 switch (characteristics)
