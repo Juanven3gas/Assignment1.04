@@ -1,2 +1,3 @@
 # Assignment1.04
 Assignment 1.4
+Please note that the Assignment is NOT COMPLETE. The current progress of the assignment is that monsters are properly generated and randomly placed in random areas in the rooms. After this they are placed in a queue where it will dequeue them and figure out how they will move. The movement for all monsters is not complete. At the moment monsters will move only if the PC is right by them thus ending the game else they won't move. The PC also does not move in this implementation. 
